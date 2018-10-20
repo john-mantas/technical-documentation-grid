@@ -59,6 +59,13 @@ a {
 }
 
 /* ----- Document header ----- */
+#doc-header {
+  position: fixed;
+  width: 100%;
+  min-height: 153px;
+  z-index: 20;
+}
+
 #doc-header h1 {
   padding: 0.5em;
   background-color: var(--grey-light);
@@ -90,14 +97,19 @@ a {
   border-bottom-color: var(--blue-normal);
 }
 
+/* ----- Main Document ----- */
+#main-doc {
+  padding-top: 153px;
+}
+
 /* ----- Navbar ----- */
 #navbar {
   position: fixed;
   width: 20%;
   height: 100%;
-  margin-right: 2em;
   padding: 2em;
   background-color: var(--grey-light);
+  z-index: 10;
 }
 
 #navbar header {
