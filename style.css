@@ -42,3 +42,35 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/* ----- Document header ----- */
+#doc-header h1 {
+  padding: 0.5em;
+  background-color: var(--grey-light);
+}
+
+.doc-header__links {
+  overflow: hidden;
+  font-size: 1.3em;
+  color: #fff;
+  background-color: #000;
+}
+
+.doc-header__links header {
+  display: list-item;
+  float: left;
+  padding: 0.64em 0.7em 0.64em 1.1em;
+  font-family: var(--serif-font);
+}
+
+.doc-header__links li {
+  float: left;
+  padding: 0.64em 0.8em 0.44em;
+  color: var(--blue-light);
+  border-bottom: 0.2em solid transparent;
+}
+
+.doc-header__links li:hover {
+  color: #fff;
+  border-bottom-color: var(--blue-light);
+}
