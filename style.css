@@ -2,4 +2,10 @@
   /*----- Fonts ----- */
   --serif-font: "Crete Round", serif;
   --sans-serif-font: Verdana, arial, sans-serif;
+
+  /* ----- Color palette ----- */
+  --grey-light: #f5f9fa;
+  --grey-dark: #333;
+  --blue-light: #83d0f2;
+  --blue-dark: #3d7e9a;
 }
