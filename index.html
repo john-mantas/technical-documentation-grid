@@ -14,7 +14,7 @@
     <h1>CSS Grid Layout</h1>
     <ul class="doc-header__links">
       <header>Jump to:</header>
-      <li><a href="">Grid</a></li>
+      <li><a href="#grid">Grid</a></li>
       <li><a href="">Grid auto</a></li>
       <li><a href="">Column</a></li>
       <li><a href="">Row</a></li>
@@ -27,7 +27,7 @@
     <nav id="navbar">
       <header>Properties</header>
       <ul>
-        <li><a href="">grid</a></li>
+        <li><a href="#grid">grid</a></li>
         <li><a href="">grid-area</a></li>
         <li><a href="">grid-auto-columns</a></li>
         <li><a href="">grid-auto-flow</a></li>
@@ -49,10 +49,83 @@
     </nav>
     <article class="main-article">
       <section class="topic-start">
-        <p>CSS Grid Layout excels at dividing a page into major regions or defining the relationship in terms of size, position, and layer, between parts of a control built from HTML primitives.</p>
-        <p>Like tables, grid layout enables an author to align elements into columns and rows. However, many more layouts are either possible or easier with CSS grid than they were with tables. For example, a grid container's child elements could position themselves so they actually overlap and layer, similar to CSS positioned elements.</p>
+        <p>CSS Grid Layout excels at dividing a page into major regions or defining the relationship in terms of size, position,
+          and layer, between parts of a control built from HTML primitives.</p>
+        <p>Like tables, grid layout enables an author to align elements into columns and rows. However, many more layouts
+          are either possible or easier with CSS grid than they were with tables. For example, a grid container's child elements
+          could position themselves so they actually overlap and layer, similar to CSS positioned elements.</p>
       </section>
-      <section class="main-section" id="grid"></section>
+      <section class="main-section" id="grid">
+        <header>
+          <h2>Grid Property</h2>
+        </header>
+        <p>The <b>grid</b> CSS property is a shorthand property that sets all of the explicit grid properties (<code>grid-template-rows</code>,
+          <code>grid-template-columns</code>, and <code>grid-template-areas</code>), and all the implicit grid properties
+          (
+          <code>grid-auto-rows</code>, <code>grid-auto-columns</code>, and <code>grid-auto-flow</code>), in a single declaration.</p>
+          <div class="container--note">
+            <p><b>Note:</b> You can only specify the explicit or the implicit grid properties in a single <code>grid</code> declaration. The sub-properties you don’t specify are set to their initial value, as normal for shorthands. Also, the gutter properties are NOT reset by this shorthand.</p>
+          </div>
+        <h3>Syntax</h3>
+        <div class="container--code">
+          <code>
+            <ul>
+              <li>/* <'grid-template'> values */</li>
+              <li>grid: none;</li>
+              <li>grid: "a" 100px "b" 1fr;</li>
+              <li>grid: [linename1] "a" 100px [linename2];</li>
+              <li>grid: "a" 200px "b" min-content;</li>
+              <li>grid: "a" minmax(100px, max-content) "b" 20%;</li>
+              <li>grid: 100px / 200px;</li>
+              <li>grid: minmax(400px, min-content) / repeat(auto-fill, 50px);</li>
+              <br>
+              <li>/* <'grid-template-rows'> /</li>
+              <li>[ auto-flow && dense? ] <'grid-auto-columns'>? values */</li>
+              <li>grid: 200px / auto-flow;</li>
+              <li>grid: 30% / auto-flow dense;</li>
+              <li>grid: repeat(3, [line1 line2 line3] 200px) / auto-flow 300px;</li>
+              <li>grid: [line1] minmax(20em, max-content) / auto-flow dense 40%;</li>
+              <br>
+              <li>/* [ auto-flow && dense? ] <'grid-auto-rows'>? /</li>
+              <li><'grid-template-columns'> values */</li>
+              <li>grid: auto-flow / 200px;</li>
+              <li>grid: auto-flow dense / 30%;</li>
+              <li>grid: auto-flow 300px / repeat(3, [line1 line2 line3] 200px);</li>
+              <li>grid: auto-flow dense 40% / [line1] minmax(20em, max-content);</li>
+              <br>
+              <li>/* Global values */</li>
+              <li>grid: inherit;</li>
+              <li>grid: initial;</li>
+              <li>grid: unset;</li>
+            </ul>
+        </code>
+        </div>
+        <h4>Values</h4>
+        <div class="values__container">
+          <p>
+            <code class="code--dark"><'grid-template'></code>
+            <span class="values__info">
+              Defines the <code>grid-template</code> including <code>grid-template-columns</code>, <code>grid-template-rows</code> and <code>grid-template-areas</code>.
+            </span>
+          </p>
+          <p>
+            <code class="code--dark"><'grid-template-rows'> / [ auto-flow && dense? ] <'grid-auto-columns'>?</code>
+            <span class="values__info">
+              Sets up an auto-flow by setting the row tracks explicitly via the <code>grid-template-rows</code> property (and the <code>grid-template-columns</code> property to none) and specifying how to auto-repeat the column tracks via <code>grid-auto-columns</code> (and setting <code>grid-auto-rows</code> to auto). <code>grid-auto-flow</code> is also set to column accordingly, with dense if it’s specified.<br>All other grid sub-properties are reset to their initial values.
+            </span>
+          </p>
+          <p>
+            <code class="code--dark">[ auto-flow && dense? ] <'grid-auto-rows'>? / <'grid-template-columns'></code>
+            <span class="values__info">
+              Sets up an auto-flow by setting the column tracks explicitly via the <code>grid-template-columns</code> property (and the <code>grid-template-rows</code> property to none) and specifying how to auto-repeat the row tracks via <code>grid-auto-rows</code> (and setting <code>grid-auto-columns</code> to auto). <code>grid-auto-flow</code> is also set to row accordingly, with dense if it’s specified.<br>All other grid sub-properties are reset to their initial values.
+            </span>
+          </p>
+        </div>
+        <h4>Formal syntax</h4>
+        <div class="container--syntax">
+          <p><'grid-template'> | <'grid-template-rows'> / [ auto-flow && dense? ] <'grid-auto-columns'>? | [ auto-flow && dense? ] <'grid-auto-rows'>? / <'grid-template-columns'></p>
+        </div>
+      </section>
       <section class="main-section" id="grid_auto"></section>
       <section class="main-section" id="column"></section>
       <section class="main-section" id="row"></section>
