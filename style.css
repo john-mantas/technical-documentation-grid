@@ -74,3 +74,28 @@ a {
   color: #fff;
   border-bottom-color: var(--blue-light);
 }
+
+/* ----- Navbar ----- */
+#navbar {
+  position: fixed;
+  width: 20%;
+  height: 100%;
+  margin-right: 2em;
+  padding: 2em;
+  background-color: var(--grey-light);
+}
+
+#navbar header {
+  margin-bottom: 0.5em;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--grey-dark);
+}
+
+#navbar li {
+  margin-bottom: 0.8em;
+  color: var(--blue-dark);
+}
+
+#navbar li a:hover {
+  text-decoration: underline;
+}
