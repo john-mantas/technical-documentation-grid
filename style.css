@@ -9,3 +9,36 @@
   --blue-light: #83d0f2;
   --blue-dark: #3d7e9a;
 }
+
+/* ----- Global ----- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--sans-serif-font);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--serif-font);
+  font-weight: 700;
+  color: var(--grey-dark);
+}
+
+h1 {font-size: 3em;}
+h2 {font-size: 2.6em;}
+h3 {font-size: 1.8em;}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
