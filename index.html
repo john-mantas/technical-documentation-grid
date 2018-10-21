@@ -19,7 +19,7 @@
       <li><a href="#column">Column</a></li>
       <li><a href="#row">Row</a></li>
       <li><a href="#template">Template</a></li>
-      <li><a href="">Gap</a></li>
+      <li><a href="#gap">Gap</a></li>
     </ul>
   </header>
 
@@ -42,7 +42,7 @@
         <li><a href="">grid-template-areas</a></li>
         <li><a href="">grid-template-columns</a></li>
         <li><a href="">grid-template-rows</a></li>
-        <li><a href="">gap</a></li>
+        <li><a href="#gap">gap</a></li>
         <li><a href="">column-gap</a></li>
         <li><a href="">row-gap</a></li>
       </ul>
@@ -436,36 +436,124 @@
           <p>
             <code class="code--dark">none</code>
             <span class="values__info">
-              Is a keyword that sets all three longhand properties to none, meaning there is no explicit grid. There are no named grid areas. Rows and columns will be implicitly generated; their size will be determined by the <code>grid-auto-rows</code> and <code>grid-auto-columns</code> properties.
+              Is a keyword that sets all three longhand properties to none, meaning there is no explicit grid. There are no named grid
+              areas. Rows and columns will be implicitly generated; their size will be determined by the <code>grid-auto-rows</code>              and
+              <code>grid-auto-columns</code> properties.
             </span>
           </p>
           <p>
             <code class="code--dark"><'grid-template-rows'> / <'grid-template-columns'></code>
             <span class="values__info">
-              Sets <code>grid-template-rows</code> and <code>grid-template-columns</code> to the specified values, and sets <code>grid-template-areas</code> to <code class="code--dark">none</code>.
+              Sets <code>grid-template-rows</code> and <code>grid-template-columns</code> to the specified values, and sets
+              <code>grid-template-areas</code> to <code class="code--dark">none</code>.
             </span>
           </p>
           <p>
             <code class="code--dark">[ < line-names >? < string > < track-size >? < line-names >? ]+ [ / < explicit-track-list > ]?</code>
             <span class="values__info">
-                Sets <code>grid-template-areas</code> to the strings listed, <code>grid-template-rows</code> to the track sizes following each string (filling in <code class="code--dark">auto</code> for any missing sizes), and splicing in the named lines defined before/after each size, and <code>grid-template-columns</code> to the track listing specified after the slash (or <code>none</code>, if not specified).
+              Sets <code>grid-template-areas</code> to the strings listed, <code>grid-template-rows</code> to the track sizes
+              following each string (filling in <code class="code--dark">auto</code> for any missing sizes), and splicing
+              in the named lines defined before/after each size, and <code>grid-template-columns</code> to the track listing
+              specified after the slash (or <code>none</code>, if not specified).
             </span>
           </p>
           <div class="container--note">
             <p>
-                <b>Note:</b> The <code>repeat()</code> function isn’t allowed in these track listings, as the tracks are intended to visually line up one-to-one with the rows/columns in the “ASCII art”.
+              <b>Note:</b> The <code>repeat()</code> function isn’t allowed in these track listings, as the tracks are intended
+              to visually line up one-to-one with the rows/columns in the “ASCII art”.
             </p>
           </div>
           <div class="container--note">
-            <p>Note: The <code>grid</code> shorthand accepts the same syntax, but also resets the implicit grid properties to their initial values. Use <code class="code--dark">grid</code> (as opposed to <code class="code--dark">grid-template</code>) to prevent these values from cascading in seperately.</p>
+            <p>Note: The <code>grid</code> shorthand accepts the same syntax, but also resets the implicit grid properties
+              to their initial values. Use <code class="code--dark">grid</code> (as opposed to <code class="code--dark">grid-template</code>)
+              to prevent these values from cascading in seperately.</p>
           </div>
         </div>
         <h4>Formal syntax</h4>
         <div class="container--syntax">
-          <p>none | [ <'grid-template-rows'> / <'grid-template-columns'> ] | [ < line-names >? < string > < track-size >? < line-names >? ]+ [ / < explicit-track-list > ]?</p>
+          <p>none | [
+            < 'grid-template-rows'> /
+              < 'grid-template-columns'> ] | [
+                < line-names>?
+                  < string>
+                    < track-size>?
+                      < line-names>? ]+ [ /
+                        < explicit-track-list> ]?
+          </p>
         </div>
       </section>
-      <section class="main-section" id="gap"></section>
+      <section class="main-section" id="gap">
+        <header>
+          <h2>grid-gap</h2>
+        </header>
+        <p>The <code class="code--dark">gap</code> CSS property sets the gaps (gutters) between rows and columns. It is a
+          shorthand for <code>row-gap</code> and <code>column-gap</code>.</p>
+        <div class="container--note">
+          <p>
+            CSS Grid Layout initially defined the grid-gap property. This prefixed property is being replaced by gap. However, in order
+            to support browsers that implemented grid-gap and not gap for grid, you will need to use the prefixed property
+            as in the interactive example above.
+          </p>
+        </div>
+        <h3>Syntax</h3>
+        <div class="container--code">
+          <code>
+                <ul>
+                        <li>/* One < length > value */</li>
+                        <li>gap: 20px;</li>
+                        <li>gap: 1em;</li>
+                        <li>gap: 3vmin;</li>
+                        <li>gap: 0.5cm;</li>
+                        <br>
+                        <li>/* One < percentage > value */</li>
+                        <li>gap: 16%;</li>
+                        <li>gap: 100%;</li>
+                        <br>
+                        <li>/* Two < length > values */</li>
+                        <li>gap: 20px 10px;</li>
+                        <li>gap: 1em 0.5em;</li>
+                        <li>gap: 3vmin 2vmax;</li>
+                        <li>gap: 0.5cm 2mm;</li>
+                        <br>
+                        <li>/* One or two < percentage > values */</li>
+                        <li>gap: 16% 100%;</li>
+                        <li>gap: 21px 82%;</li>
+                        <br>
+                        <li>/* calc() values */</li>
+                        <li>gap: calc(10% + 20px);</li>
+                        <li>gap: calc(20px + 10%) calc(10% - 5px);</li>
+                        <br>
+                        <li>/* Global values */</li>
+                        <li>gap: inherit;</li>
+                        <li>gap: initial;</li>
+                        <li>gap: unset;</li>
+                </ul>
+              </code>
+        </div>
+        <p>This property is specified as a value for <code class="code--dark"><'row-gap'></code> followed optionally by a value for <code class="code--dark"><'column-gap'></code>. If <code class="code--dark"><'column-gap'></code> is omitted, it’s set to the same value as <code class="code--dark"><'row-gap'>.</p>
+        <p><code class="code--dark"><'row-gap'></code> and <code class="code--dark"><'column-gap'></code> are each specified as a <code class="code--dark">< length ></code> or a <code class="code--dark">< percentage ></code>.</p>
+        <h4>Values</h4>
+        <div class="container--values">
+          <p>
+            <code class="code--dark">length</code>
+            <span class="values__info">
+                Is the width of the gutter separating the grid lines.
+            </span>
+          </p>
+          <p>
+              <code class="code--dark">percentage</code>
+              <span class="values__info">
+                  Is the width of the gutter separating the grid lines, relative to the dimension of the element.
+              </span>
+            </p>
+        </div>
+        <h4>Formal syntax</h4>
+        <div class="container--syntax">
+          <p>
+              <'row-gap'> <'column-gap'>?
+          </p>
+        </div>
+      </section>
     </article>
   </main>
 </body>
