@@ -12,67 +12,69 @@
 <body>
   <header id="doc-header">
     <h1>CSS Grid Layout</h1>
-    <ul class="doc-header__links">
+    <ol class="doc-header__links">
       <header>Jump to:</header>
-      <li><a href="#grid">Grid</a></li>
-      <li><a href="#grid_auto">Grid auto</a></li>
-      <li><a href="#column">Column</a></li>
-      <li><a href="#row">Row</a></li>
-      <li><a href="#template">Template</a></li>
-      <li><a href="#gap">Gap</a></li>
-    </ul>
+      <li><a href="#grid_property">Grid</a></li>
+      <li><a href="#grid_auto_flow">Grid auto</a></li>
+      <li><a href="#grid_column">Column</a></li>
+      <li><a href="#grid_row">Row</a></li>
+      <li><a href="#grid_template">Template</a></li>
+      <li><a href="#grid_gap">Gap</a></li>
+    </ol>
   </header>
 
   <main id="main-doc">
     <nav id="navbar">
       <header>Properties</header>
-      <ul>
-        <li><a href="#grid">grid</a></li>
+      <ol>
+        <li><a href="#grid_property">grid</a></li>
         <li><a href="">grid-area</a></li>
         <li><a href="">grid-auto-columns</a></li>
-        <li><a href="#grid_auto">grid-auto-flow</a></li>
+        <li><a href="#grid_auto_flow">grid-auto-flow</a></li>
         <li><a href="">grid-auto-rows</a></li>
-        <li><a href="#column">grid-column</a></li>
+        <li><a href="#grid_column">grid-column</a></li>
         <li><a href="">grid-column-end</a></li>
         <li><a href="">grid-column-start</a></li>
-        <li><a href="#row">grid-row</a></li>
+        <li><a href="#grid_row">grid-row</a></li>
         <li><a href="">grid-row-end</a></li>
         <li><a href="">grid-row-start</a></li>
-        <li><a href="#template">grid-template</a></li>
+        <li><a href="#grid_template">grid-template</a></li>
         <li><a href="">grid-template-areas</a></li>
         <li><a href="">grid-template-columns</a></li>
         <li><a href="">grid-template-rows</a></li>
-        <li><a href="#gap">gap</a></li>
+        <li><a href="#grid_gap">gap</a></li>
         <li><a href="">column-gap</a></li>
         <li><a href="">row-gap</a></li>
-      </ul>
+      </ol>
     </nav>
     <article class="main-article">
+      <!-- ===== Topic start ===== -->
       <section class="topic-start">
-        <p>CSS Grid Layout excels at dividing a page into major regions or defining the relationship in terms of size, position,
-          and layer, between parts of a control built from HTML primitives.</p>
-        <p>Like tables, grid layout enables an author to align elements into columns and rows. However, many more layouts
-          are either possible or easier with CSS grid than they were with tables. For example, a grid container's child elements
-          could position themselves so they actually overlap and layer, similar to CSS positioned elements.</p>
+        <p>
+          CSS Grid Layout excels at dividing a page into major regions or defining the relationship in terms of size, position, and layer, between parts of a control built from HTML primitives.
+        </p>
+        <p>
+          Like tables, grid layout enables an author to align elements into columns and rows. However, many more layouts are either possible or easier with CSS grid than they were with tables. For example, a grid container's child elements could position themselves so they actually overlap and layer, similar to CSS positioned elements.
+        </p>
       </section>
-      <section class="main-section" id="grid">
+      <!-- ===== Grid section ===== -->
+      <section class="main-section" id="grid_property">
         <header>
           <h2>Grid Property</h2>
         </header>
-        <p>The <b>grid</b> CSS property is a shorthand property that sets all of the explicit grid properties (<code>grid-template-rows</code>,
-          <code>grid-template-columns</code>, and <code>grid-template-areas</code>), and all the implicit grid properties
-          (
-          <code>grid-auto-rows</code>, <code>grid-auto-columns</code>, and <code>grid-auto-flow</code>), in a single declaration.</p>
+        <p>
+          The <b>grid</b> CSS property is a shorthand property that sets all of the explicit grid properties (<code>grid-template-rows</code>, <code>grid-template-columns</code>, and <code>grid-template-areas</code>), and all the implicit grid properties (<code>grid-auto-rows</code>, <code>grid-auto-columns</code>, and <code>grid-auto-flow</code>), in a single declaration.
+        </p>
         <div class="container--note">
-          <p><b>Note:</b> You can only specify the explicit or the implicit grid properties in a single <code>grid</code>            declaration.
-            The sub-properties you don’t specify are set to their initial value, as normal for shorthands. Also, the gutter
-            properties are NOT reset by this shorthand.</p>
+          <p>
+            <b>Note:</b> You can only specify the explicit or the implicit grid properties in a single <code>grid</code> declaration. The sub-properties you don’t specify are set to their initial value, as normal for shorthands. Also, the gutter properties are NOT reset by this shorthand.
+          </p>
         </div>
         <h3>Syntax</h3>
         <div class="container--code">
           <code>
-            <ul>
-              <li>/* <'grid-template'> values */</li>
+            <ol>
+              <li>/* &lt;'grid-template'> values */</li>
               <li>grid: none;</li>
               <li>grid: "a" 100px "b" 1fr;</li>
               <li>grid: [linename1] "a" 100px [linename2];</li>
@@ -81,15 +83,15 @@
               <li>grid: 100px / 200px;</li>
               <li>grid: minmax(400px, min-content) / repeat(auto-fill, 50px);</li>
               <br>
-              <li>/* <'grid-template-rows'> /</li>
-              <li>[ auto-flow && dense? ] <'grid-auto-columns'>? values */</li>
+              <li>/* &lt;'grid-template-rows'> /</li>
+              <li>[ auto-flow && dense? ] &lt;'grid-auto-columns'>? values */</li>
               <li>grid: 200px / auto-flow;</li>
               <li>grid: 30% / auto-flow dense;</li>
               <li>grid: repeat(3, [line1 line2 line3] 200px) / auto-flow 300px;</li>
               <li>grid: [line1] minmax(20em, max-content) / auto-flow dense 40%;</li>
               <br>
-              <li>/* [ auto-flow && dense? ] <'grid-auto-rows'>? /</li>
-              <li><'grid-template-columns'> values */</li>
+              <li>/* [ auto-flow && dense? ] &lt;'grid-auto-rows'>? /</li>
+              <li>&lt;'grid-template-columns'> values */</li>
               <li>grid: auto-flow / 200px;</li>
               <li>grid: auto-flow dense / 30%;</li>
               <li>grid: auto-flow 300px / repeat(3, [line1 line2 line3] 200px);</li>
@@ -99,60 +101,49 @@
               <li>grid: inherit;</li>
               <li>grid: initial;</li>
               <li>grid: unset;</li>
-            </ul>
+            </ol>
         </code>
         </div>
         <h4>Values</h4>
         <div class="values__container">
           <p>
-            <code class="code--dark"><'grid-template'></code>
+            <code class="code--dark">&lt;'grid-template'></code>
             <span class="values__info">
-              Defines the <code>grid-template</code> including <code>grid-template-columns</code>, <code>grid-template-rows</code>              and
-              <code>grid-template-areas</code>.
+              Defines the <code>grid-template</code> including <code>grid-template-columns</code>, <code>grid-template-rows</code> and <code>grid-template-areas</code>.
             </span>
           </p>
           <p>
-            <code class="code--dark"><'grid-template-rows'> / [ auto-flow && dense? ] <'grid-auto-columns'>?</code>
+            <code class="code--dark">&lt;'grid-template-rows'> / [ auto-flow && dense? ] &lt;'grid-auto-columns'>?</code>
             <span class="values__info">
-              Sets up an auto-flow by setting the row tracks explicitly via the <code>grid-template-rows</code> property
-              (and the <code>grid-template-columns</code> property to none) and specifying how to auto-repeat the column
-              tracks via <code>grid-auto-columns</code> (and setting <code>grid-auto-rows</code> to auto). <code>grid-auto-flow</code>              is
-              also set to column accordingly, with dense if it’s specified.<br>All other grid sub-properties are reset to
-              their initial values.
+              Sets up an auto-flow by setting the row tracks explicitly via the <code>grid-template-rows</code> property (and the <code>grid-template-columns</code> property to none) and specifying how to auto-repeat the column tracks via <code>grid-auto-columns</code> (and setting <code>grid-auto-rows</code> to auto). <code>grid-auto-flow</code> also set to column accordingly, with dense if it’s specified.<br>All other grid sub-properties are reset to their initial values.
             </span>
           </p>
           <p>
-            <code class="code--dark">[ auto-flow && dense? ] <'grid-auto-rows'>? / <'grid-template-columns'></code>
+            <code class="code--dark">[ auto-flow && dense? ] &lt;'grid-auto-rows'>? / &lt;'grid-template-columns'></code>
             <span class="values__info">
-              Sets up an auto-flow by setting the column tracks explicitly via the <code>grid-template-columns</code> property
-              (and the <code>grid-template-rows</code> property to none) and specifying how to auto-repeat the row tracks
-              via <code>grid-auto-rows</code> (and setting <code>grid-auto-columns</code> to auto). <code>grid-auto-flow</code>              is
-              also set to row accordingly, with dense if it’s specified.<br>All other grid sub-properties are reset to their
-              initial values.
+              Sets up an auto-flow by setting the column tracks explicitly via the <code>grid-template-columns</code> property (and the <code>grid-template-rows</code> property to none) and specifying how to auto-repeat the row tracks via <code>grid-auto-rows</code> (and setting <code>grid-auto-columns</code> to auto). <code>grid-auto-flow</code> is also set to row accordingly, with dense if it’s specified.<br>All other grid sub-properties are reset to their initial values.
             </span>
           </p>
         </div>
         <h4>Formal syntax</h4>
         <div class="container--syntax">
           <p>
-            < 'grid-template'> |
-              < 'grid-template-rows'> / [ auto-flow && dense? ]
-                < 'grid-auto-columns'>? | [ auto-flow && dense? ]
-                  < 'grid-auto-rows'>? /
-                    < 'grid-template-columns'>
+            &lt; 'grid-template'> | &lt; 'grid-template-rows'> / [ auto-flow && dense? ] &lt; 'grid-auto-columns'>? | [ auto-flow && dense? ] &lt; 'grid-auto-rows'>? / &lt; 'grid-template-columns'>
           </p>
         </div>
       </section>
-      <section class="main-section" id="grid_auto">
+      <!-- ===== Grid-auto section ===== -->
+      <section class="main-section" id="grid_auto_flow">
         <header>
-          <h2>grid-auto-flow</h2>
+          <h2>grid auto flow</h2>
         </header>
-        <p>The <code class="code--dark">grid-auto-flow</code> CSS property controls how the auto-placement algorithm works,
-          specifying exactly how auto-placed items get flowed into the grid.</p>
+        <p>
+          The <code class="code--dark">grid-auto-flow</code> CSS property controls how the auto-placement algorithm works, specifying exactly how auto-placed items get flowed into the grid.
+        </p>
         <h3>Syntax</h3>
         <div class="container--code">
           <code>
-            <ul>
+            <ol>
               <li>/* Keyword values */</li>
               <li>grid-auto-flow: row;</li>
               <li>grid-auto-flow: column;</li>
@@ -164,14 +155,13 @@
               <li>grid-auto-flow: inherit;</li>
               <li>grid-auto-flow: unset;</li>
               <li>grid-auto-flow: initial;</li>
-            </ul>
+            </ol>
           </code>
         </div>
         <p>
           The property may take one of two forms:
           <ul>
-            <li>a single keyword: one of <code class="code--dark">row</code>, <code class="code--dark">column</code>, or
-              <code class="code--dark">dense</code>.</li>
+            <li>a single keyword: one of <code class="code--dark">row</code>, <code class="code--dark">column</code>, or <code class="code--dark">dense</code>.</li>
             <li>two keywords: <code class="code--dark">row dense</code> or <code class="code--dark">column dense</code>.</li>
           </ul>
         </p>
@@ -180,27 +170,19 @@
           <p>
             <code class="code--dark">row</code>
             <span class="values__info">
-              Is a keyword specifying that the auto-placement algorithm places items, by filling each row in turn, adding new rows as necessary.
-              If neither <code class="code--dark">row</code> nor <code class="code--dark">column</code> is
-              provided, <code class="code--dark">row</code> is assumed.
+              Is a keyword specifying that the auto-placement algorithm places items, by filling each row in turn, adding new rows as necessary. If neither <code class="code--dark">row</code> nor <code class="code--dark">column</code> is provided, <code class="code--dark">row</code> is assumed.
             </span>
           </p>
           <p>
             <code class="code--dark">column</code>
             <span class="values__info">
-              Is a keyword specifying that the auto-placement algorithm places items, by filling each column in turn, adding new columns
-              as necessary.
+              Is a keyword specifying that the auto-placement algorithm places items, by filling each column in turn, adding new columns as necessary.
             </span>
           </p>
           <p>
             <code class="code--dark">dense</code>
             <span class="values__info">
-              Is a keyword specifying that the auto-placement algorithm uses a “dense” packing algorithm, which attempts to fill in holes
-              earlier in the grid, if smaller items come up later. This may cause items to appear out-of-order, when doing
-              so would fill in holes left by larger items.<br> If it is omitted, a “sparse” algorithm is used,
-              where the placement algorithm only ever moves “forward” in the grid when placing items, never backtracking
-              to fill holes. This ensures that all of the auto-placed items appear “in order”, even if this leaves holes
-              that could have been filled by later items.
+              Is a keyword specifying that the auto-placement algorithm uses a “dense” packing algorithm, which attempts to fill in holes earlier in the grid, if smaller items come up later. This may cause items to appear out-of-order, when doing so would fill in holes left by larger items.<br> If it is omitted, a “sparse” algorithm is used, where the placement algorithm only ever moves “forward” in the grid when placing items, never backtracking to fill holes. This ensures that all of the auto-placed items appear “in order”, even if this leaves holes that could have been filled by later items.
             </span>
           </p>
         </div>
@@ -211,30 +193,29 @@
           </p>
         </div>
       </section>
-      <section class="main-section" id="column">
+      <!-- ===== Column section ===== -->
+      <section class="main-section" id="grid_column">
         <header>
-          <h2>grid-column</h2>
+          <h2>grid column</h2>
         </header>
-        <p>The <code class="code--dark">grid-column</code> CSS property is a shorthand property for <code>grid-column-start</code>          and
-          <code>grid-column-end</code> specifying a grid item's size and location within the grid column by contributing
-          a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start and inline-end
-          edge of its grid area.</p>
-        <h3>Syntax</h3>
-        <p>This property is specified as one or two <code class="code--dark">< grid-line ></code> values.</p>
-        <p>If two <code class="code--dark">< grid-line ></code> values are given they are separated by "/". The <code class="code--dark">grid-column-start</code>          longhand
-          is set to the value before the slash, and the <code class="code--dark">grid-column-end</code> longhand is set to
-          the value after the slash.</p>
         <p>
-          Each <code class="code--dark">< grid-line ></code> value can be specified as:
+          The <code class="code--dark">grid-column</code> CSS property is a shorthand property for <code>grid-column-start</code> and <code>grid-column-end</code> specifying a grid item's size and location within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start and inline-end edge of its grid area.
+        </p>
+        <h3>Syntax</h3>
+        <p>
+          This property is specified as one or two <code class="code--dark">&lt; grid-line ></code> values.
+        </p>
+        <p>
+          If two <code class="code--dark">&lt; grid-line ></code> values are given they are separated by "/". The <code class="code--dark">grid-column-start</code> longhand is set to the value before the slash, and the <code class="code--dark">grid-column-end</code> longhand is set to the value after the slash.
+        </p>
+        <p>
+          Each <code class="code--dark">&lt; grid-line ></code> value can be specified as:
           <ul>
             <li>either the <code class="code--dark">auto keyword</code></li>
-            <li>or a <code class="code--dark">< custom-ident ></code> value</li>
-            <li>or an <code class="code--dark">< integer ></code> value</li>
-            <li>or both <code class="code--dark">< custom-ident ></code> and <code class="code--dark">< integer ></code>,
-              separated by a space</li>
-            <li>or the keyword span together with either a <code class="code--dark">< custom-ident ></code> or an <code class="code--dark">< integer ></code>              or
-              both.
-            </li>
+            <li>or a <code class="code--dark">&lt; custom-ident ></code> value</li>
+            <li>or an <code class="code--dark">&lt; integer ></code> value</li>
+            <li>or both <code class="code--dark">&lt; custom-ident ></code> and <code class="code--dark">&lt; integer ></code>, separated by a space</li>
+            <li>or the keyword span together with either a <code class="code--dark">&lt; custom-ident ></code> or an <code class="code--dark">&lt; integer ></code> or both.</li>
           </ul>
         </p>
         <h4>Values</h4>
@@ -242,320 +223,279 @@
           <p>
             <code class="code--dark">auto</code>
             <span class="values__info">
-              Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an
-              automatic span, or a default span of 1.
+              Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an automatic span, or a default span of 1.
             </span>
           </p>
           <p>
-            <code class="code--dark">< custom-ident ></code>
+            <code class="code--dark">&lt; custom-ident ></code>
             <span class="values__info">
-              If there is a named line with the name '< custom-ident>-start'/'
-                < custom-ident>-end', it contributes the first such line to the grid item’s placement.
-                  <div class="container--note">
-                    <p>
-                      <b>Note:</b> Named grid areas automatically generate implicit named lines of this form, so specifying
-                      grid-column: foo; will choose the start/end edge of that named grid area (unless another line named
-                      foo-start/foo-end was explicitly specified before it).
-                    </p>
-                  </div>
-                  <p>Otherwise, this is treated as if the integer 1 had been specified along with the
-                    < custom-ident>.
-                  </p>
+              If there is a named line with the name '&lt; custom-ident>-start'/' &lt; custom-ident>-end', it contributes the first such line to the grid item’s placement.
+              <div class="container--note">
+                <p>
+                  <b>Note:</b> Named grid areas automatically generate implicit named lines of this form, so specifying grid-column: foo; will choose the start/end edge of that named grid area (unless another line named foo-start/foo-end was explicitly specified before it).
+                </p>
+              </div>
+              <p>
+                Otherwise, this is treated as if the integer 1 had been specified along with the &lt; custom-ident>.
+              </p>
             </span>
           </p>
           <p>
-            <code class="code--dark">< integer > && < custom-ident >?</code>
+            <code class="code--dark">&lt; integer > && &lt; custom-ident >?</code>
             <span class="values__info">
-              Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse,
-              starting from the end edge of the explicit grid. If a name is given as a <code class="code--dark">< custom-ident ></code>,
-              only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are
-              assumed to have that name for the purpose of finding this position. An <code>< integer ></code> value of 0
-              is invalid.
+              Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid. If a name is given as a <code class="code--dark">&lt; custom-ident ></code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are assumed to have that name for the purpose of finding this position. An <code>&lt; integer ></code> value of 0 is invalid.
             </span>
           </p>
           <p>
-            <code class="code--dark">span && [ < integer > || < custom-ident > ]</code>
+            <code class="code--dark">span && [ &lt; integer > || &lt; custom-ident > ]</code>
             <span class="values__info">
-              Contributes a grid span to the grid item’s placement such that the corresponding edge of the grid item’s grid area is n lines
-              from the opposite edge. If a name is given as a < custom-ident>, only lines with that name are
-                counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid
-                corresponding to the search direction are assumed to have that name for the purpose of counting this span.
-                <br><br> If the < integer> is omitted, it defaults to 1. Negative integers or 0 are invalid.
+              Contributes a grid span to the grid item’s placement such that the corresponding edge of the grid item’s grid area is n lines from the opposite edge. If a name is given as a &lt; custom-ident>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid corresponding to the search direction are assumed to have that name for the purpose of counting this span.
+              <br><br> If the &lt; integer> is omitted, it defaults to 1. Negative integers or 0 are invalid.
             </span>
           </p>
         </div>
         <h4>Formal syntax</h4>
         <div class="container--syntax">
           <p>
-            < grid-line> [ /
-              < grid-line> ]?
+            &lt; grid-line> [ / &lt; grid-line> ]?
           </p>
           <p>
-            where<br>
-            < grid-line> = auto |
-              < custom-ident> | [
-                < integer> &&
-                  < custom-ident>? ] | [ span && [
-                    < integer> ||
-                      < custom-ident> ] ]
+            where<br> &lt; grid-line> = auto | &lt; custom-ident> | [ &lt; integer> && &lt; custom-ident>? ] | [ span && [ &lt; integer> || &lt; custom-ident> ] ]
           </p>
         </div>
       </section>
-      <section class="main-section" id="row">
+      <!-- ===== Row section ===== -->
+      <section class="main-section" id="grid_row">
         <header>
-          <h2>grid-row</h2>
+          <h2>grid row</h2>
         </header>
-        <p>The <b>grid-row</b> CSS property is a shorthand property for <code>grid-row-start</code> and <code>grid-row-end</code>          specifying
-          a grid item’s size and location within the grid row by contributing a line, a span, or nothing (automatic) to its
-          grid placement, thereby specifying the inline-start and inline-end edge of its grid area.</p>
+        <p>
+          The <code class="code--dark">grid-row</code> CSS property is a shorthand property for <code>grid-row-start</code> and <code>grid-row-end</code> specifying a grid item’s size and location within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start and inline-end edge of its grid area.
+        </p>
         <h3>Syntax</h3>
         <div class="container--code">
           <code>
-                <ul>
-                    <li>/* Keyword values */</li>
-                    <li>grid-row: auto;</li>
-                    <li>grid-row: auto / auto;</li>
-                    <br>
-                    <li>/* < custom-ident > values */</li>
-                    <li>grid-row: somegridarea;</li>
-                    <li>grid-row: somegridarea / someothergridarea;</li>
-                    <br>
-                    <li>/* < integer > + < custom-ident > values */</li>
-                    <li>grid-row: somegridarea 4;</li>
-                    <li>grid-row: 4 somegridarea / 6;</li>
-                    <br>
-                    <li>/* span + < integer > + < custom-ident > values */</li>
-                    <li>grid-row: span 3;</li>
-                    <li>grid-row: span somegridarea;</li>
-                    <li>grid-row: 5 somegridarea span;</li>
-                    <li>grid-row: span 3 / 6;</li>
-                    <li>grid-row: span somegridarea / span someothergridarea;</li>
-                    <li>grid-row: 5 somegridarea span / 2 span;</li>
-                    <br>
-                    <li>/* Global values */</li>
-                    <li>grid-row: inherit;</li>
-                    <li>grid-row: initial;</li>
-                    <li>grid-row: unset;</li>
-                </ul>
-              </code>
+            <ol>
+              <li>/* Keyword values */</li>
+              <li>grid-row: auto;</li>
+              <li>grid-row: auto / auto;</li>
+              <br>
+              <li>/* &lt; custom-ident > values */</li>
+              <li>grid-row: somegridarea;</li>
+              <li>grid-row: somegridarea / someothergridarea;</li>
+              <br>
+              <li>/* &lt; integer > + &lt; custom-ident > values */</li>
+              <li>grid-row: somegridarea 4;</li>
+              <li>grid-row: 4 somegridarea / 6;</li>
+              <br>
+              <li>/* span + &lt; integer > + &lt; custom-ident > values */</li>
+              <li>grid-row: span 3;</li>
+              <li>grid-row: span somegridarea;</li>
+              <li>grid-row: 5 somegridarea span;</li>
+              <li>grid-row: span 3 / 6;</li>
+              <li>grid-row: span somegridarea / span someothergridarea;</li>
+              <li>grid-row: 5 somegridarea span / 2 span;</li>
+              <br>
+              <li>/* Global values */</li>
+              <li>grid-row: inherit;</li>
+              <li>grid-row: initial;</li>
+              <li>grid-row: unset;</li>
+            </ol>
+          </code>
         </div>
         <h4>Values</h4>
         <div class="container--values">
           <p>
             <code class="code--dark">auto</code>
             <span class="values__info">
-              Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an
-              automatic span, or a default span of 1.
+              Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an automatic span, or a default span of 1.
             </span>
           </p>
           <p>
-            <code class="code--dark">< custom-ident ></code>
+            <code class="code--dark">&lt; custom-ident ></code>
             <span class="values__info">
-              If there is a named line with the name '< custom-ident>-start'/'
-                < custom-ident>-end', it contributes the first such line to the grid item’s placement.
-                  <div class="container--note">
-                    <p>
-                      <b>Note:</b> Named grid areas automatically generate implicit named lines of this form, so specifying
-                      grid-column: foo; will choose the start/end edge of that named grid area (unless another line named
-                      foo-start/foo-end was explicitly specified before it).
-                    </p>
-                  </div>
-                  <p>Otherwise, this is treated as if the integer 1 had been specified along with the
-                    < custom-ident>.
-                  </p>
+              If there is a named line with the name '&lt; custom-ident>-start'/' &lt; custom-ident>-end', it contributes the first such line to the grid item’s placement.
+              <div class="container--note">
+                <p>
+                  <b>Note:</b> Named grid areas automatically generate implicit named lines of this form, so specifying grid-column: foo; will choose the start/end edge of that named grid area (unless another line named foo-start/foo-end was explicitly specified before it).
+                </p>
+              </div>
+              <p>
+                Otherwise, this is treated as if the integer 1 had been specified along with the &lt; custom-ident>.
+              </p>
             </span>
           </p>
           <p>
-            <code class="code--dark">< integer > && < custom-ident >?</code>
+            <code class="code--dark">&lt; integer > && &lt; custom-ident >?</code>
             <span class="values__info">
-              Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse,
-              starting from the end edge of the explicit grid. If a name is given as a <code class="code--dark">< custom-ident ></code>,
-              only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are
-              assumed to have that name for the purpose of finding this position. An <code>< integer ></code> value of 0
-              is invalid.
+              Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid. If a name is given as a <code class="code--dark">&lt; custom-ident ></code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are assumed to have that name for the purpose of finding this position. An <code>&lt; integer ></code> value of 0 is invalid.
             </span>
           </p>
           <p>
-            <code class="code--dark">span && [ < integer > || < custom-ident > ]</code>
+            <code class="code--dark">span && [ &lt; integer > || &lt; custom-ident > ]</code>
             <span class="values__info">
-              Contributes a grid span to the grid item’s placement such that the corresponding edge of the grid item’s grid area is n lines
-              from the opposite edge. If a name is given as a < custom-ident>, only lines with that name are
-                counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid
-                corresponding to the search direction are assumed to have that name for the purpose of counting this span.
-                <br><br> If the < integer> is omitted, it defaults to 1. Negative integers or 0 are invalid.
+              Contributes a grid span to the grid item’s placement such that the corresponding edge of the grid item’s grid area is n lines from the opposite edge. If a name is given as a &lt; custom-ident>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid corresponding to the search direction are assumed to have that name for the purpose of counting this span. <br><br> If the &lt; integer> is omitted, it defaults to 1. Negative integers or 0 are invalid.
             </span>
           </p>
         </div>
         <h4>Formal syntax</h4>
         <div class="container--syntax">
           <p>
-            < grid-line> [ /
-              < grid-line> ]?
+            &lt; grid-line> [ / &lt; grid-line> ]?
           </p>
           <p>
-            where<br>
-            < grid-line> = auto |
-              < custom-ident> | [
-                < integer> &&
-                  < custom-ident>? ] | [ span && [
-                    < integer> ||
-                      < custom-ident> ] ]
+            where<br> &lt; grid-line> = auto | &lt; custom-ident> | [ &lt; integer> && &lt; custom-ident>? ] | [ span && [ &lt; integer> || &lt; custom-ident> ] ]
           </p>
         </div>
       </section>
-      <section class="main-section" id="template">
+      <!-- ===== Template section ===== -->
+      <section class="main-section" id="grid_template">
         <header>
-          <h2>grid-template</h2>
+          <h2>grid template</h2>
         </header>
-        <p>The <code class="code--dark">grid-template</code> CSS property is a shorthand property for defining grid columns,
-          rows, and areas.</p>
-        <p>Authors can set values for the longhand properties: <code>grid-template-rows</code>, <code>grid-template-columns</code>,
-          and <code>grid-template-areas</code>.</p>
+        <p>
+          The <code class="code--dark">grid-template</code> CSS property is a shorthand property for defining grid columns, rows, and areas.
+        </p>
+        <p>
+          Authors can set values for the longhand properties: <code>grid-template-rows</code>, <code>grid-template-columns</code>, and <code>grid-template-areas</code>.
+        </p>
         <h3>Syntax</h3>
         <div class="container--code">
           <code>
-                <ul>
-                    <li>/* Keyword value */</li>
-                    <li>grid-template: none;</li>
-                    <br>
-                    <li>/* grid-template-rows / grid-template-columns values */</li>
-                    <li>grid-template: 100px 1fr / 50px 1fr;</li>
-                    <li>grid-template: auto 1fr / auto 1fr auto;</li>
-                    <li>grid-template: [linename] 100px / [columnname1] 30% [columnname2] 70%;</li>
-                    <li>grid-template: fit-content(100px) / fit-content(40%);</li>
-                    <br>
-                    <li>/* Global values */</li>
-                    <li>grid-template: inherit;</li>
-                    <li>grid-template: initial;</li>
-                    <li>grid-template: unset;</li>
-                </ul>
-              </code>
+            <ol>
+              <li>/* Keyword value */</li>
+              <li>grid-template: none;</li>
+              <br>
+              <li>/* grid-template-rows / grid-template-columns values */</li>
+              <li>grid-template: 100px 1fr / 50px 1fr;</li>
+              <li>grid-template: auto 1fr / auto 1fr auto;</li>
+              <li>grid-template: [linename] 100px / [columnname1] 30% [columnname2] 70%;</li>
+              <li>grid-template: fit-content(100px) / fit-content(40%);</li>
+              <br>
+              <li>/* Global values */</li>
+              <li>grid-template: inherit;</li>
+              <li>grid-template: initial;</li>
+              <li>grid-template: unset;</li>
+            </ol>
+          </code>
         </div>
         <h4>Values</h4>
         <div class="container--values">
           <p>
             <code class="code--dark">none</code>
             <span class="values__info">
-              Is a keyword that sets all three longhand properties to none, meaning there is no explicit grid. There are no named grid
-              areas. Rows and columns will be implicitly generated; their size will be determined by the <code>grid-auto-rows</code>              and
-              <code>grid-auto-columns</code> properties.
+              Is a keyword that sets all three longhand properties to none, meaning there is no explicit grid. There are no named grid areas. Rows and columns will be implicitly generated; their size will be determined by the <code>grid-auto-rows</code>, <code>grid-auto-columns</code> properties.
             </span>
           </p>
           <p>
-            <code class="code--dark"><'grid-template-rows'> / <'grid-template-columns'></code>
+            <code class="code--dark">&lt;'grid-template-rows'> / &lt;'grid-template-columns'></code>
             <span class="values__info">
-              Sets <code>grid-template-rows</code> and <code>grid-template-columns</code> to the specified values, and sets
-              <code>grid-template-areas</code> to <code class="code--dark">none</code>.
+              Sets <code>grid-template-rows</code> and <code>grid-template-columns</code> to the specified values, and sets <code>grid-template-areas</code> to <code class="code--dark">none</code>.
             </span>
           </p>
           <p>
-            <code class="code--dark">[ < line-names >? < string > < track-size >? < line-names >? ]+ [ / < explicit-track-list > ]?</code>
+            <code class="code--dark">[ &lt; line-names >? &lt; string > &lt; track-size >? &lt; line-names >? ]+ [ / &lt; explicit-track-list > ]?</code>
             <span class="values__info">
-              Sets <code>grid-template-areas</code> to the strings listed, <code>grid-template-rows</code> to the track sizes
-              following each string (filling in <code class="code--dark">auto</code> for any missing sizes), and splicing
-              in the named lines defined before/after each size, and <code>grid-template-columns</code> to the track listing
-              specified after the slash (or <code>none</code>, if not specified).
+              Sets <code>grid-template-areas</code> to the strings listed, <code>grid-template-rows</code> to the track sizes following each string (filling in <code class="code--dark">auto</code> for any missing sizes), and splicing in the named lines defined before/after each size, and <code>grid-template-columns</code> to the track listing specified after the slash (or <code>none</code>, if not specified).
             </span>
           </p>
           <div class="container--note">
             <p>
-              <b>Note:</b> The <code>repeat()</code> function isn’t allowed in these track listings, as the tracks are intended
-              to visually line up one-to-one with the rows/columns in the “ASCII art”.
+              <b>Note:</b> The <code>repeat()</code> function isn’t allowed in these track listings, as the tracks are intended to visually line up one-to-one with the rows/columns in the “ASCII art”.
             </p>
           </div>
           <div class="container--note">
-            <p>Note: The <code>grid</code> shorthand accepts the same syntax, but also resets the implicit grid properties
-              to their initial values. Use <code class="code--dark">grid</code> (as opposed to <code class="code--dark">grid-template</code>)
-              to prevent these values from cascading in seperately.</p>
+            <p>
+              Note: The <code>grid</code> shorthand accepts the same syntax, but also resets the implicit grid properties to their initial values. Use <code class="code--dark">grid</code> (as opposed to <code class="code--dark">grid-template</code>) to prevent these values from cascading in seperately.
+            </p>
           </div>
         </div>
         <h4>Formal syntax</h4>
         <div class="container--syntax">
-          <p>none | [
-            < 'grid-template-rows'> /
-              < 'grid-template-columns'> ] | [
-                < line-names>?
-                  < string>
-                    < track-size>?
-                      < line-names>? ]+ [ /
-                        < explicit-track-list> ]?
+          <p>
+            none | [ &lt; 'grid-template-rows'> / &lt; 'grid-template-columns'> ] | [ &lt; line-names>? &lt; string> &lt; track-size>? &lt; line-names>? ]+ [ / &lt; explicit-track-list> ]?
           </p>
         </div>
       </section>
-      <section class="main-section" id="gap">
+      <!-- ===== Gap section ===== -->
+      <section class="main-section" id="grid_gap">
         <header>
-          <h2>grid-gap</h2>
+          <h2>grid gap</h2>
         </header>
-        <p>The <code class="code--dark">gap</code> CSS property sets the gaps (gutters) between rows and columns. It is a
-          shorthand for <code>row-gap</code> and <code>column-gap</code>.</p>
+        <p>
+          The <code class="code--dark">gap</code> CSS property sets the gaps (gutters) between rows and columns. It is a shorthand for <code>row-gap</code> and <code>column-gap</code>.
+        </p>
         <div class="container--note">
           <p>
-            CSS Grid Layout initially defined the grid-gap property. This prefixed property is being replaced by gap. However, in order
-            to support browsers that implemented grid-gap and not gap for grid, you will need to use the prefixed property
-            as in the interactive example above.
+            CSS Grid Layout initially defined the grid-gap property. This prefixed property is being replaced by gap. However, in order to support browsers that implemented grid-gap and not gap for grid, you will need to use the prefixed property as in the interactive example above.
           </p>
         </div>
         <h3>Syntax</h3>
         <div class="container--code">
           <code>
-                <ul>
-                        <li>/* One < length > value */</li>
-                        <li>gap: 20px;</li>
-                        <li>gap: 1em;</li>
-                        <li>gap: 3vmin;</li>
-                        <li>gap: 0.5cm;</li>
-                        <br>
-                        <li>/* One < percentage > value */</li>
-                        <li>gap: 16%;</li>
-                        <li>gap: 100%;</li>
-                        <br>
-                        <li>/* Two < length > values */</li>
-                        <li>gap: 20px 10px;</li>
-                        <li>gap: 1em 0.5em;</li>
-                        <li>gap: 3vmin 2vmax;</li>
-                        <li>gap: 0.5cm 2mm;</li>
-                        <br>
-                        <li>/* One or two < percentage > values */</li>
-                        <li>gap: 16% 100%;</li>
-                        <li>gap: 21px 82%;</li>
-                        <br>
-                        <li>/* calc() values */</li>
-                        <li>gap: calc(10% + 20px);</li>
-                        <li>gap: calc(20px + 10%) calc(10% - 5px);</li>
-                        <br>
-                        <li>/* Global values */</li>
-                        <li>gap: inherit;</li>
-                        <li>gap: initial;</li>
-                        <li>gap: unset;</li>
-                </ul>
-              </code>
+            <ol>
+              <li>/* One &lt; length > value */</li>
+              <li>gap: 20px;</li>
+              <li>gap: 1em;</li>
+              <li>gap: 3vmin;</li>
+              <li>gap: 0.5cm;</li>
+              <br>
+              <li>/* One &lt; percentage > value */</li>
+              <li>gap: 16%;</li>
+              <li>gap: 100%;</li>
+              <br>
+              <li>/* Two &lt; length > values */</li>
+              <li>gap: 20px 10px;</li>
+              <li>gap: 1em 0.5em;</li>
+              <li>gap: 3vmin 2vmax;</li>
+              <li>gap: 0.5cm 2mm;</li>
+              <br>
+              <li>/* One or two &lt; percentage > values */</li>
+              <li>gap: 16% 100%;</li>
+              <li>gap: 21px 82%;</li>
+              <br>
+              <li>/* calc() values */</li>
+              <li>gap: calc(10% + 20px);</li>
+              <li>gap: calc(20px + 10%) calc(10% - 5px);</li>
+              <br>
+              <li>/* Global values */</li>
+              <li>gap: inherit;</li>
+              <li>gap: initial;</li>
+              <li>gap: unset;</li>
+            </ol>
+          </code>
         </div>
-        <p>This property is specified as a value for <code class="code--dark"><'row-gap'></code> followed optionally by a value for <code class="code--dark"><'column-gap'></code>. If <code class="code--dark"><'column-gap'></code> is omitted, it’s set to the same value as <code class="code--dark"><'row-gap'>.</p>
-        <p><code class="code--dark"><'row-gap'></code> and <code class="code--dark"><'column-gap'></code> are each specified as a <code class="code--dark">< length ></code> or a <code class="code--dark">< percentage ></code>.</p>
+        <p>
+          This property is specified as a value for <code class="code--dark">&lt;'row-gap'></code> followed optionally by a value for <code class="code--dark">&lt;'column-gap'></code>. If <code class="code--dark">&lt;'column-gap'></code> is omitted, it’s set to the same value as <code class="code--dark">&lt;'row-gap'></code>.
+        </p>
+        <p>
+          <code class="code--dark">&lt;'row-gap'></code> and <code class="code--dark">&lt;'column-gap'></code> are each specified as a <code class="code--dark">&lt; length ></code> or a <code class="code--dark">&lt; percentage ></code>.
+        </p>
         <h4>Values</h4>
         <div class="container--values">
           <p>
             <code class="code--dark">length</code>
             <span class="values__info">
-                Is the width of the gutter separating the grid lines.
+              Is the width of the gutter separating the grid lines.
             </span>
           </p>
           <p>
-              <code class="code--dark">percentage</code>
-              <span class="values__info">
-                  Is the width of the gutter separating the grid lines, relative to the dimension of the element.
-              </span>
-            </p>
+            <code class="code--dark">percentage</code>
+            <span class="values__info">
+              Is the width of the gutter separating the grid lines, relative to the dimension of the element.
+            </span>
+          </p>
         </div>
         <h4>Formal syntax</h4>
         <div class="container--syntax">
           <p>
-              <'row-gap'> <'column-gap'>?
+            &lt;'row-gap'> &lt;'column-gap'>?
           </p>
         </div>
       </section>
     </article>
   </main>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
 
 </html>
