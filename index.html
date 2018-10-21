@@ -17,7 +17,7 @@
       <li><a href="#grid">Grid</a></li>
       <li><a href="#grid_auto">Grid auto</a></li>
       <li><a href="#column">Column</a></li>
-      <li><a href="">Row</a></li>
+      <li><a href="#row">Row</a></li>
       <li><a href="">Template</a></li>
       <li><a href="">Gap</a></li>
     </ul>
@@ -35,7 +35,7 @@
         <li><a href="#column">grid-column</a></li>
         <li><a href="">grid-column-end</a></li>
         <li><a href="">grid-column-start</a></li>
-        <li><a href="">grid-row</a></li>
+        <li><a href="#row">grid-row</a></li>
         <li><a href="">grid-row-end</a></li>
         <li><a href="">grid-row-start</a></li>
         <li><a href="">grid-template</a></li>
@@ -233,7 +233,8 @@
             <li>or both <code class="code--dark">< custom-ident ></code> and <code class="code--dark">< integer ></code>,
               separated by a space</li>
             <li>or the keyword span together with either a <code class="code--dark">< custom-ident ></code> or an <code class="code--dark">< integer ></code>              or
-              both.</li>
+              both.
+            </li>
           </ul>
         </p>
         <h4>Values</h4>
@@ -241,49 +242,167 @@
           <p>
             <code class="code--dark">auto</code>
             <span class="values__info">
-              Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an automatic span, or a default span of 1.
+              Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an
+              automatic span, or a default span of 1.
             </span>
           </p>
           <p>
             <code class="code--dark">< custom-ident ></code>
             <span class="values__info">
-                If there is a named line with the name '< custom-ident >-start'/'< custom-ident >-end', it contributes the first such line to the grid item’s placement.
-                <div class="container--note">
-                  <p>
-                      <b>Note:</b> Named grid areas automatically generate implicit named lines of this form, so specifying grid-column: foo; will choose the start/end edge of that named grid area (unless another line named foo-start/foo-end was explicitly specified before it).
+              If there is a named line with the name '< custom-ident>-start'/'
+                < custom-ident>-end', it contributes the first such line to the grid item’s placement.
+                  <div class="container--note">
+                    <p>
+                      <b>Note:</b> Named grid areas automatically generate implicit named lines of this form, so specifying
+                      grid-column: foo; will choose the start/end edge of that named grid area (unless another line named
+                      foo-start/foo-end was explicitly specified before it).
+                    </p>
+                  </div>
+                  <p>Otherwise, this is treated as if the integer 1 had been specified along with the
+                    < custom-ident>.
                   </p>
-                </div>
-                <p>Otherwise, this is treated as if the integer 1 had been specified along with the < custom-ident >.</p>
             </span>
           </p>
           <p>
             <code class="code--dark">< integer > && < custom-ident >?</code>
             <span class="values__info">
-                Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid.
-                If a name is given as a <code class="code--dark">< custom-ident ></code>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are assumed to have that name for the purpose of finding this position.
-                
-                An <code>< integer ></code> value of 0 is invalid.
+              Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse,
+              starting from the end edge of the explicit grid. If a name is given as a <code class="code--dark">< custom-ident ></code>,
+              only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are
+              assumed to have that name for the purpose of finding this position. An <code>< integer ></code> value of 0
+              is invalid.
             </span>
           </p>
           <p>
             <code class="code--dark">span && [ < integer > || < custom-ident > ]</code>
             <span class="values__info">
-                Contributes a grid span to the grid item’s placement such that the corresponding edge of the grid item’s grid area is n lines from the opposite edge.
-                If a name is given as a < custom-ident >, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid corresponding to the search direction are assumed to have that name for the purpose of counting this span.
-                <br><br>
-                If the < integer > is omitted, it defaults to 1. Negative integers or 0 are invalid.
+              Contributes a grid span to the grid item’s placement such that the corresponding edge of the grid item’s grid area is n lines
+              from the opposite edge. If a name is given as a < custom-ident>, only lines with that name are
+                counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid
+                corresponding to the search direction are assumed to have that name for the purpose of counting this span.
+                <br><br> If the < integer> is omitted, it defaults to 1. Negative integers or 0 are invalid.
             </span>
           </p>
         </div>
         <h4>Formal syntax</h4>
         <div class="container--syntax">
-          <p>< grid-line > [ / < grid-line > ]?</p>
+          <p>
+            < grid-line> [ /
+              < grid-line> ]?
+          </p>
           <p>
             where<br>
-            < grid-line > = auto | < custom-ident > | [ < integer > && < custom-ident >? ] | [ span && [ < integer > || < custom-ident > ] ]</p>
+            < grid-line> = auto |
+              < custom-ident> | [
+                < integer> &&
+                  < custom-ident>? ] | [ span && [
+                    < integer> ||
+                      < custom-ident> ] ]
+          </p>
         </div>
       </section>
-      <section class="main-section" id="row"></section>
+      <section class="main-section" id="row">
+        <header>
+          <h2>grid-row</h2>
+        </header>
+        <p>The <b>grid-row</b> CSS property is a shorthand property for <code>grid-row-start</code> and <code>grid-row-end</code>          specifying
+          a grid item’s size and location within the grid row by contributing a line, a span, or nothing (automatic) to its
+          grid placement, thereby specifying the inline-start and inline-end edge of its grid area.</p>
+        <h3>Syntax</h3>
+        <div class="container--code">
+          <code>
+                <ul>
+                    <li>/* Keyword values */</li>
+                    <li>grid-row: auto;</li>
+                    <li>grid-row: auto / auto;</li>
+                    <br>
+                    <li>/* < custom-ident > values */</li>
+                    <li>grid-row: somegridarea;</li>
+                    <li>grid-row: somegridarea / someothergridarea;</li>
+                    <br>
+                    <li>/* < integer > + < custom-ident > values */</li>
+                    <li>grid-row: somegridarea 4;</li>
+                    <li>grid-row: 4 somegridarea / 6;</li>
+                    <br>
+                    <li>/* span + < integer > + < custom-ident > values */</li>
+                    <li>grid-row: span 3;</li>
+                    <li>grid-row: span somegridarea;</li>
+                    <li>grid-row: 5 somegridarea span;</li>
+                    <li>grid-row: span 3 / 6;</li>
+                    <li>grid-row: span somegridarea / span someothergridarea;</li>
+                    <li>grid-row: 5 somegridarea span / 2 span;</li>
+                    <br>
+                    <li>/* Global values */</li>
+                    <li>grid-row: inherit;</li>
+                    <li>grid-row: initial;</li>
+                    <li>grid-row: unset;</li>
+                </ul>
+              </code>
+        </div>
+        <h4>Values</h4>
+        <div class="container--values">
+            <p>
+              <code class="code--dark">auto</code>
+              <span class="values__info">
+                Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement, an
+                automatic span, or a default span of 1.
+              </span>
+            </p>
+            <p>
+              <code class="code--dark">< custom-ident ></code>
+              <span class="values__info">
+                If there is a named line with the name '< custom-ident>-start'/'
+                  < custom-ident>-end', it contributes the first such line to the grid item’s placement.
+                    <div class="container--note">
+                      <p>
+                        <b>Note:</b> Named grid areas automatically generate implicit named lines of this form, so specifying
+                        grid-column: foo; will choose the start/end edge of that named grid area (unless another line named
+                        foo-start/foo-end was explicitly specified before it).
+                      </p>
+                    </div>
+                    <p>Otherwise, this is treated as if the integer 1 had been specified along with the
+                      < custom-ident>.
+                    </p>
+              </span>
+            </p>
+            <p>
+              <code class="code--dark">< integer > && < custom-ident >?</code>
+              <span class="values__info">
+                Contributes the nth grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse,
+                starting from the end edge of the explicit grid. If a name is given as a <code class="code--dark">< custom-ident ></code>,
+                only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are
+                assumed to have that name for the purpose of finding this position. An <code>< integer ></code> value of 0
+                is invalid.
+              </span>
+            </p>
+            <p>
+              <code class="code--dark">span && [ < integer > || < custom-ident > ]</code>
+              <span class="values__info">
+                Contributes a grid span to the grid item’s placement such that the corresponding edge of the grid item’s grid area is n lines
+                from the opposite edge. If a name is given as a < custom-ident>, only lines with that name are
+                  counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid
+                  corresponding to the search direction are assumed to have that name for the purpose of counting this span.
+                  <br><br> If the < integer> is omitted, it defaults to 1. Negative integers or 0 are invalid.
+              </span>
+            </p>
+          </div>
+        <h4>Formal syntax</h4>
+        <div class="container--syntax">
+            <p>
+              < grid-line> [ /
+                < grid-line> ]?
+            </p>
+            <p>
+              where<br>
+              < grid-line> = auto |
+                < custom-ident> | [
+                  < integer> &&
+                    < custom-ident>? ] | [ span && [
+                      < integer> ||
+                        < custom-ident> ] ]
+            </p>
+          </div>
+      </section>
       <section class="main-section" id="template"></section>
       <section class="main-section" id="gap"></section>
     </article>
