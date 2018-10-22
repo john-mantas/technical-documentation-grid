@@ -58,6 +58,12 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: none;
+  color: inherit;
+  background-color: transparent;
+}
+
 /* ----- Document header ----- */
 #doc-header {
   position: fixed;
@@ -82,6 +88,10 @@ a {
   display: inline-block;
   padding: 0.64em 0.7em 0.64em 1.1em;
   font-family: var(--serif-font);
+}
+
+.doc-header__more {
+  display: none;
 }
 
 .doc-header__links li {
@@ -221,4 +231,22 @@ a {
 .values__info {
   display: block;
   padding-left: 1.3em;
+}
+
+/* ===== Media queries ===== */
+/* --- Medium --- */
+@media (max-width: 760px) {
+  /* ----- Document Header ----- */
+  .doc-header__links.is-open li{
+    display: block;
+  }
+
+  .doc-header__more {
+    display: inline-block;
+  }
+
+  .doc-header__links li {
+    display: none;
+    padding-left: 2.5em;
+  }
 }
