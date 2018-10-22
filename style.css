@@ -238,7 +238,6 @@ button {
 }
 
 /* ===== Media queries ===== */
-/* --- Medium --- */
 @media only screen and (max-width: 760px) {
   /* ----- Document Header ----- */
   .doc-header__links.is-open li{
@@ -253,8 +252,6 @@ button {
     display: none;
     padding-left: 2.5em;
   }
-
-
 }
 
 @media only screen and (max-width: 800px) {
