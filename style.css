@@ -39,6 +39,7 @@ h3 {font-size: 2em;}
 
 h4 {
   display: inline-block;
+  margin: 0.2em 0;
   padding: 3px 5px 3px 35px;
   line-height: 1 !important;
   font-size: 1.5em;
@@ -68,7 +69,6 @@ button {
 #doc-header {
   position: fixed;
   width: 100%;
-  min-height: 153px;
   z-index: 20;
 }
 
@@ -108,7 +108,10 @@ button {
 
 /* ----- Main Document ----- */
 #main-doc {
-  padding-top: 153px;
+  position: absolute;
+  top: 153px;
+  height: calc(100vh - 153px);
+  overflow-y: scroll;
 }
 
 /* ----- Navbar ----- */
@@ -117,6 +120,7 @@ button {
   width: 300px;
   height: 100%;
   padding: 2em;
+  overflow-y: auto;
   background-color: var(--grey-light);
   z-index: 10;
 }
@@ -164,11 +168,11 @@ button {
 .main-article {
   margin-left: 300px;
   padding: 1.7em;
-  line-height: 1.6;
 }
 
 .main-article p {
   max-width: 672px;
+  line-height: 1.6;
 }
 
 .topic-start > p {
@@ -178,12 +182,13 @@ button {
 /* ----- Main section ----- */
 .main-section {
   position: relative;
-  margin: 6em 0;
+  margin: 3em 0;
+  padding-top: 3em;
 }
 
 .main-section::before {
   position: absolute;
-  top: -3em;
+  top: 0;
   width: 100%;
   height: 3px;
   content: "";
@@ -240,6 +245,10 @@ button {
 /* ===== Media queries ===== */
 @media only screen and (max-width: 760px) {
   /* ----- Document Header ----- */
+  #doc-header h1 {
+    font-size: 2.5em;
+  }
+
   .doc-header__links.is-open li{
     display: block;
   }
@@ -252,13 +261,21 @@ button {
     display: none;
     padding-left: 2.5em;
   }
+
+  /* ----- Main article ----- */
+  .main-article {
+    padding: 1em;
+  }
 }
 
 @media only screen and (max-width: 800px) {
     /* ----- Navbar ----- */
     #navbar {
+      top: 0;
+      padding: 1.2em 2em 2.95em;
       transform: translateX(-100%);
       transition: 0.2s ease-in-out;
+      z-index: 30;
     }
   
     #navbar.is-open {
@@ -268,18 +285,21 @@ button {
   
     .navbar__btn {
       display: inline-block;
-      position: absolute;
-      top: 0;
-      left: 100%;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      margin: 0.5em;
       padding: 0 0.3em 0.3em;
       font-size: 2em;
       color: var(--grey-dark);
       background-color: var(--blue-normal);
+      box-shadow: 1px 2px 12px -4px #000;
+      border-radius: 50%;
+      z-index: 31;
     }
   
     /* ----- Main article ----- */
     .main-article {
       margin-left: 0;
-      padding-top: 3.7em;
     }
 }
